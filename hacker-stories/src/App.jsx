@@ -1,5 +1,10 @@
 import * as React from "react";
 
+const title = {
+  greeting: "Hey",
+  name: "React"
+};
+
 const list = [
   {
     title: "React",
@@ -13,17 +18,33 @@ const list = [
 ]
 
 function App() {
-  return list.map(obj => {
-    return (
+  return (
+    <div>
+      <h1>{title.greeting}, {title.name}</h1>
+      <label>
+        <label htmlFor="search">Search: </label>
+        <input id="search" type="text"></input>
+      </label>
       <table>
         <tr>
-          <th>{obj.title}</th>
-          <td>{obj.url}</td>
-          <td>{obj.objectId}</td>
+          <th>title</th>
+          <th>url</th>
+          <th>id</th>
         </tr>
+        {
+          list.map(obj => {
+            return (
+              <tr>
+                <td>{obj.title}</td>
+                <td>{obj.url}</td>
+                <td>{obj.objectId}</td>
+              </tr>
+            );
+          })
+        }
       </table>
-    );
-  })
+    </div>
+  );
 }
 
 export default App;
